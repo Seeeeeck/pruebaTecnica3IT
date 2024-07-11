@@ -1,4 +1,11 @@
-export const items = [
+
+interface Item {
+  id: number;
+  label: string;
+  name: string;
+  icon: string;
+}
+export const items: Item[] = [
   {id: 1, label: 'Dólar', name: 'dolar', icon: 'currency-usd'},
   {id: 2, label: 'Euro', name: 'euro', icon: 'currency-eur'},
   {id: 3, label: 'IPC', name: 'ipc', icon: 'finance'},

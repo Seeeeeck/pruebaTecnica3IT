@@ -1,7 +1,6 @@
-import {useEffect, useState} from 'react';
 import CardStatistics from '../../../components/charts/CardStatistics';
 import useGetDetailsFinancialIndicatorLastTenDays from '../../../hooks/useGetDetailsFinancialIndicatorLastTenDays';
-import {Text} from 'react-native-paper';
+
 
 interface CardLastTenDaysStatisticsProps {
   name: string;

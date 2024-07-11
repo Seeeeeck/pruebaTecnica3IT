@@ -1,14 +1,14 @@
 import React from 'react';
 
 import {View} from 'react-native';
-import {NavigationDrawerPropsType} from '../..//types/types';
 import AppBarHeader from '../../components/bars/AppBarHeader';
 import ListComponent from '../../components/list/ListComponent';
 import {items} from '../../utils/constItems';
-
-const HomeScreen: React.FC<NavigationDrawerPropsType> = (
-  props: NavigationDrawerPropsType,
-) => {
+import {NavigationProp} from '@react-navigation/native';
+interface HomeScreenProps {
+  navigation: NavigationProp<any, any>;
+}
+const HomeScreen: React.FC<HomeScreenProps> = props => {
   return (
     <View>
       <AppBarHeader

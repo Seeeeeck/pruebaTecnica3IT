@@ -1,15 +1,31 @@
-import  React, { memo } from 'react';
+import React, {memo} from 'react';
 import {List} from 'react-native-paper';
-import {ListType} from '../../types/types';
 import {FlatList, StyleSheet, View} from 'react-native';
 import ListItem from './ListItem';
 import ListItemNavigation from './ListItemNavigation';
 import ListItemDateIndicator from './ListItemDateIndicator';
+import {NavigationProp} from '@react-navigation/native';
 
-const ListComponent: React.FC<ListType> = ({
+
+interface Item {
+  id: number;
+  label: string;
+  name: string;
+  icon: string;
+}
+interface ListComponentProps {
+  listItemActionName?: string;
+  activeListItemAction?: boolean;
+  navigation?: NavigationProp<any, any>;
+  title: string;
+  type: 'text' | 'info' | 'dateIndicator';
+  items?:Item[];
+}
+
+const ListComponent: React.FC<ListComponentProps> = ({
   activeListItemAction = false,
   ...props
-}: ListType) => {
+}) => {
   const renderItem = (item: any) => {
     if (props.type === 'dateIndicator') {
       return <ListItemDateIndicator {...item.item} />;

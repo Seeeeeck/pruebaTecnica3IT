@@ -1,8 +1,14 @@
 import {List, Text} from 'react-native-paper';
-import {itemType} from '../../types/types';
-import { memo } from 'react';
 
-const ListItem: React.FC<itemType> = ({label, icon, name}: itemType) => {
+import {memo} from 'react';
+
+interface ListItemProps {
+  name: string;
+  label: string;
+  icon: string;
+  id: number;
+}
+const ListItem: React.FC<ListItemProps> = ({label, icon}) => {
   return (
     <List.Item
       title={label}

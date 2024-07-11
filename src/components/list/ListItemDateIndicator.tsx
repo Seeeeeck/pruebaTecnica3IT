@@ -1,14 +1,12 @@
 import {List, Text} from 'react-native-paper';
-import {itemType} from '../../types/types';
+
 import {memo} from 'react';
 
-interface IndicatorValue {
+interface ListItemIndicatorProps {
   Fecha: string;
   Valor: string;
 }
-const ListItemDateIndicator: React.FC<IndicatorValue> = (
-  data: IndicatorValue,
-) => {
+const ListItemDateIndicator: React.FC<ListItemIndicatorProps> = data => {
   return (
     <List.Item
       title={data.Fecha}

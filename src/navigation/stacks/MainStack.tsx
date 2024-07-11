@@ -1,26 +1,26 @@
 import HomeScreen from '../../screens/HomeScreen/HomeScreen';
 import {createStackNavigator} from '@react-navigation/stack';
-import {NavigationDrawerPropsType} from '../../types/types';
-import {ScreenContainerProps} from 'react-native-screens';
 import ListFinancialIndicatorsScreen from '../../screens/ListFinancialIndicatorsScreen/ListFinancialIndicatorsScreen';
-import ModalDetailIndicatorsScreen from '../../screens/ModalDetailIndicatorScreen/ModalDetailIndicatorScreen';
 import ModalDetailIndicatorScreen from '../../screens/ModalDetailIndicatorScreen/ModalDetailIndicatorScreen';
+import {CompositeScreenProps } from '@react-navigation/native';
 
 const MainStackNavigator = createStackNavigator<MainStackParamList>();
 
+interface Item {
+  id: number;
+  label: string;
+  name: string;
+  icon: string;
+}
 export type MainStackParamList = {
-  Home: {name: string; component: React.FC<NavigationDrawerPropsType>};
-  ListFinancialIndicators: {
-    name: string;
-    component: React.FC<NavigationDrawerPropsType>;
-  };
+  Home: {name: string};
+  ListFinancialIndicators: {a:CompositeScreenProps<any,any>,item:Item};
   ModalDetailIndicator: {
     name: string;
-    component: React.FC<NavigationDrawerPropsType>;
   };
 };
 
-const MainStack: React.FC<ScreenContainerProps> = () => {
+const MainStack: React.FC<MainStackParamList> = () => {
   return (
     <MainStackNavigator.Navigator initialRouteName="Home">
       <MainStackNavigator.Screen
@@ -36,7 +36,7 @@ const MainStack: React.FC<ScreenContainerProps> = () => {
       />
 
       <MainStackNavigator.Screen
-        options={{presentation: 'modal',headerShown:false}}
+        options={{presentation: 'modal', headerShown: false}}
         name="ModalDetailIndicator"
         component={ModalDetailIndicatorScreen}
       />

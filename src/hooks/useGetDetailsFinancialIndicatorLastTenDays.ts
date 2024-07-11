@@ -2,10 +2,10 @@ import {useState, useEffect} from 'react';
 import apiInstance from '../config/axiosConfig'; // suponiendo que tienes una instancia de la API
 import setIndicatorNameUtil from '../utils/setIndicatorNameUtil';
 
-interface Props {
+interface useGetDetailsFinancialIndicatorLastTenDaysProps {
   indicatorName: string;
 }
-const useGetDetailsFinancialIndicatorLastTenDays = ({indicatorName}: Props) => {
+const useGetDetailsFinancialIndicatorLastTenDays = ({indicatorName}: useGetDetailsFinancialIndicatorLastTenDaysProps) => {
   const [detail, setDetail] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);

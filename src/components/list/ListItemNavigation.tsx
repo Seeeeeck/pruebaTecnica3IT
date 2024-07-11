@@ -1,11 +1,20 @@
 import {IconButton, List, MD3Colors} from 'react-native-paper';
-import {itemTypeNavigation} from '../../types/types';
-import {memo} from 'react';
 
-const ListItemNavigation: React.FC<itemTypeNavigation> = ({
+import {memo} from 'react';
+import {NavigationProp} from '@react-navigation/native';
+
+interface ListItemNavigationProps {
+  name: string;
+  label: string;
+  icon: string;
+  navigation?: NavigationProp<any, any>;
+  screenName?: string;
+}
+
+const ListItemNavigation: React.FC<ListItemNavigationProps> = ({
   navigation,
   ...props
-}: itemTypeNavigation) => {
+}) => {
   const screenName = props?.screenName ?? '';
 
   const navigateActiveListItem = () => {

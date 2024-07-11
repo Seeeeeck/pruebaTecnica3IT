@@ -1,16 +1,19 @@
 import React from 'react';
 import {View} from 'react-native';
 import AppBarHeader from '../../components/bars/AppBarHeader';
-import {NavigationPropType} from '../../types/types';
+
 import useGetDetailFinancialIndicator from '../../hooks/useGetDetailFinancialIndicator';
-import {Button, Card, Divider, Text} from 'react-native-paper';
-import CardStatistics from '../../components/charts/CardStatistics';
+import {Card, Divider, Text} from 'react-native-paper';
 import CardLastTenDaysStatistics from './components/CardLastTenDaysStatistics';
 import CardLastYearMonths from './components/CardLastYearMonths';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {MainStackParamList} from '../../navigation/stacks/MainStack';
 
-const ModalDetailIndicatorScreen: React.FC<NavigationPropType> = (
-  props: NavigationPropType,
-) => {
+type ModalDetailIndicatorScreenProps = NativeStackScreenProps<
+  MainStackParamList,
+  'ModalDetailIndicator'
+>;
+const ModalDetailIndicatorScreen: React.FC<ModalDetailIndicatorScreenProps> = props => {
   const {...item} = props.route.params;
   const {name, label} = props.route.params;
   const {detail, loading} = useGetDetailFinancialIndicator({
@@ -88,7 +91,7 @@ const ModalDetailIndicatorScreen: React.FC<NavigationPropType> = (
         {['uf', 'dolar', 'euro'].includes(name) && (
           <CardLastTenDaysStatistics name={name} />
         )}
-        {(name === 'ipc' || name === 'utm' ) && (
+        {(name === 'ipc' || name === 'utm') && (
           <CardLastYearMonths name={name} />
         )}
       </View>

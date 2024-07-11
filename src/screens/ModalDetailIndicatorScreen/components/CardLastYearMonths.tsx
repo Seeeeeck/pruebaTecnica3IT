@@ -9,7 +9,7 @@ const CardLastYearMonths: React.FC<CardLastYearMonthsProps> = ({name}) => {
   const {detail, error, loading} = useGetDetailsFinancialIndicatorLastYear({
     indicatorName: name,
   });
-  const days = detail?.map(item => item?.Fecha);
+  const days = detail?.map(item=> item?.Fecha);
   const indicators = detail?.map(item => parseFloat(item?.Valor));
 
   if (days.length > 0 && indicators.length > 0) {

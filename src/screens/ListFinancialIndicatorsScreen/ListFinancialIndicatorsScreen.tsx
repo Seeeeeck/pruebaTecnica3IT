@@ -1,28 +1,21 @@
 import {View} from 'react-native';
 import AppBarHeader from '../../components/bars/AppBarHeader';
-import {itemType, NavigationPropType, IndicatorData} from '../../types/types';
 
-import {RouteProp} from '@react-navigation/native';
 import ListComponent from '../../components/list/ListComponent';
 import useFinancialIndicators from '../../hooks/useGetFinancialIndicators';
 import LoadingIndicator from '../../components/loading/LoadingIndicator';
 import {useEffect, useMemo, useState} from 'react';
 import {Divider, Text} from 'react-native-paper';
-import {useEvent} from 'react-native-reanimated';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {MainStackParamList} from '../../navigation/stacks/MainStack';
 
-interface Params {
-  item: itemType;
-}
-interface Props {
-  navigation: NavigationPropType;
-  route: RouteProp<Record<string, Params>, string>;
-}
-const ListFinancialIndicatorsScreen: React.FC<Props> = ({
-  navigation,
-  route,
-}) => {
+type ListFinancialIndicatorsScreenProps =NativeStackScreenProps<MainStackParamList, 'ListFinancialIndicators'>;
+
+const ListFinancialIndicatorsScreen: React.FC<
+  ListFinancialIndicatorsScreenProps
+> = ({navigation, route}) => {
   const date = new Date();
-  const {item} = route.params;
+  const {item}= route.params;
 
   const {
     indicators: dataIndicators,
@@ -71,12 +64,12 @@ const ListFinancialIndicatorsScreen: React.FC<Props> = ({
                 display: 'flex',
                 flexDirection: 'row',
                 justifyContent: 'center',
-                alignItems:"baseline"
+                alignItems: 'baseline',
               }}>
               <Text variant="headlineSmall" style={{margin: 4}}>
                 Total promedio:
               </Text>
-              <Text variant="headlineSmall"  style={{margin: 4}}>
+              <Text variant="headlineSmall" style={{margin: 4}}>
                 ${totalAverage.toPrecision(5)}
               </Text>
             </View>

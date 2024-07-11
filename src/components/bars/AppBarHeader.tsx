@@ -1,7 +1,14 @@
 import {Appbar} from 'react-native-paper';
-import {AppBarProps} from '../../types/types';
+import { NavigationProp } from '@react-navigation/native';
 
-const AppBarHeader: React.FC<AppBarProps> = (props: AppBarProps) => {
+interface  AppBarProps  {
+  title: string;
+  icon?: string;
+  navigation?: NavigationProp<any,any>;
+  isHome: boolean;
+};
+
+const AppBarHeader: React.FC<AppBarProps> = (props) => {
   const {isHome = false} = props;
   const goBack = () => {
     props?.navigation?.goBack();
