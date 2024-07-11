@@ -1191,6 +1191,8 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
+  - RNPermissions (4.1.5):
+    - React-Core
   - RNReanimated (3.14.0):
     - DoubleConversion
     - glog
@@ -1320,6 +1322,7 @@ DEPENDENCIES:
   - React-utils (from `../node_modules/react-native/ReactCommon/react/utils`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
+  - RNPermissions (from `../node_modules/react-native-permissions`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
   - RNSVG (from `../node_modules/react-native-svg`)
@@ -1446,6 +1449,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon"
   RNGestureHandler:
     :path: "../node_modules/react-native-gesture-handler"
+  RNPermissions:
+    :path: "../node_modules/react-native-permissions"
   RNReanimated:
     :path: "../node_modules/react-native-reanimated"
   RNScreens:
@@ -1515,6 +1520,7 @@ SPEC CHECKSUMS:
   React-utils: a06061b3887c702235d2dac92dacbd93e1ea079e
   ReactCommon: f00e436b3925a7ae44dfa294b43ef360fbd8ccc4
   RNGestureHandler: 8dbcccada4a7e702e7dec9338c251b1cf393c960
+  RNPermissions: 655678c54391137c08a833d54f7adbcfc13f0f27
   RNReanimated: f4ff116e33e0afc3d127f70efe928847c7c66355
   RNScreens: 5aeecbb09aa7285379b6e9f3c8a3c859bb16401c
   RNSVG: 7c3f3fac9de6d67eee5525a8bafffafaaf022991
@@ -1522,6 +1528,6 @@ SPEC CHECKSUMS:
   SocketRocket: abac6f5de4d4d62d24e11868d7a2f427e0ef940d
   Yoga: 88480008ccacea6301ff7bf58726e27a72931c8d
 
-PODFILE CHECKSUM: d4408045d7f62a1bb147cedd1b5db676a2a1b7d4
+PODFILE CHECKSUM: a9ba9a0305ee62ac60ff8f6cc3c7e847c7a357e5
 
 COCOAPODS: 1.12.1
