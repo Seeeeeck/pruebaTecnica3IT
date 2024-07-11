@@ -37,3 +37,8 @@ Indicadores Financieros es una aplicación móvil que proporciona información f
 - La aplicación utiliza React Native Chart Kit para visualizar datos financieros.
 - La aplicación utiliza Axios para realizar solicitudes HTTP.
 - La aplicación utiliza React Navigation para navegar entre pantallas.
+
+## Variables de entorno
+### Crear archivo .env el la raiz del proyecto con las siguientes variables
+- API_URL=https://api.cmfchile.cl/api-sbifv3/recursos_api/
+- API_KEY=INGRESAR ACA LA API KEY
