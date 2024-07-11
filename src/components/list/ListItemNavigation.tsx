@@ -1,5 +1,6 @@
 import {IconButton, List, MD3Colors} from 'react-native-paper';
 import {itemTypeNavigation} from '../../types/types';
+import {memo} from 'react';
 
 const ListItemNavigation: React.FC<itemTypeNavigation> = ({
   navigation,
@@ -21,7 +22,7 @@ const ListItemNavigation: React.FC<itemTypeNavigation> = ({
             icon="information-outline"
             iconColor={MD3Colors.primary40}
             size={35}
-            onPress={() => {}}
+            onPress={() => navigation?.navigate('ModalDetailIndicator', props)}
           />
         );
       }}
@@ -29,4 +30,4 @@ const ListItemNavigation: React.FC<itemTypeNavigation> = ({
   );
 };
 
-export default ListItemNavigation;
+export default memo(ListItemNavigation);

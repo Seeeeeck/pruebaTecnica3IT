@@ -1,12 +1,21 @@
 import {useState, useEffect} from 'react';
 import apiInstance from '../config/axiosConfig'; // suponiendo que tienes una instancia de la API
+import setIndicatorNameUtil from '../utils/setIndicatorNameUtil';
 
 interface Props {
   indicatorName: string;
   month: number;
   year: number;
+  month2: number;
+  year2: number;
 }
-const useFinancialIndicators = ({indicatorName, month, year}: Props) => {
+const useFinancialIndicators = ({
+  indicatorName,
+  month,
+  year,
+  month2,
+  year2,
+}: Props) => {
   const [indicators, setIndicators] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -16,44 +25,20 @@ const useFinancialIndicators = ({indicatorName, month, year}: Props) => {
       setLoading(true);
       try {
         const response = await apiInstance.get(
-          `${indicatorName}/${year}/${month}`,
+          indicatorName === 'dolar' ||
+            indicatorName === 'euro' ||
+            indicatorName === 'uf'
+            ? `${indicatorName}/periodo/${year2}/${month2}/${year}/${month}`
+            : `${indicatorName}/${year}`,
           {
             params: {
               formato: 'json',
             },
           },
         );
-        const items = [
-          {id: 1, label: 'Dólar', name: 'dolar', icon: 'currency-usd'},
-          {id: 2, label: 'Euro', name: 'euro', icon: 'currency-eur'},
-          {id: 3, label: 'IPC', name: 'ipc', icon: 'finance'},
-          {id: 4, label: 'UF', name: 'uf', icon: 'hand-coin-outline'},
-          {
-            id: 5,
-            label: 'UTM',
-            name: 'utm',
-            icon: 'credit-card-search-outline',
-          },
-        ];
-        if (indicatorName === 'dolar') {
-          setIndicators(response?.data?.Dolares);
-        }
 
-        if (indicatorName === 'euro') {
-          setIndicators(response?.data?.Euros);
-        }
-
-        if (indicatorName === 'uf') {
-          setIndicators(response?.data?.UFs);
-        }
-
-        if (indicatorName === 'utm') {
-          setIndicators(response?.data?.UTMs);
-        }
-
-        if (indicatorName === 'ipc') {
-          setIndicators(response?.data?.IPCs);
-        }
+        const indicatorResponse = setIndicatorNameUtil(indicatorName, response);
+        setIndicators(indicatorResponse);
       } catch (error: unknown) {
         setError((error as Error).message);
       } finally {

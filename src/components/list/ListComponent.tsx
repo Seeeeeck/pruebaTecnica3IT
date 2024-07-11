@@ -1,4 +1,4 @@
-import * as React from 'react';
+import  React, { memo } from 'react';
 import {List} from 'react-native-paper';
 import {ListType} from '../../types/types';
 import {FlatList, StyleSheet, View} from 'react-native';
@@ -10,7 +10,6 @@ const ListComponent: React.FC<ListType> = ({
   activeListItemAction = false,
   ...props
 }: ListType) => {
-
   const renderItem = (item: any) => {
     if (props.type === 'dateIndicator') {
       return <ListItemDateIndicator {...item.item} />;
@@ -45,4 +44,4 @@ const ListComponent: React.FC<ListType> = ({
 
 const styles = StyleSheet.create({});
 
-export default ListComponent;
+export default memo(ListComponent);

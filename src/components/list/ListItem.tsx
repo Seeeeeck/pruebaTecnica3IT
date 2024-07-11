@@ -1,7 +1,8 @@
 import {List, Text} from 'react-native-paper';
 import {itemType} from '../../types/types';
+import { memo } from 'react';
 
-const ListItem: React.FC<itemType> = ({label,icon,name}:itemType) => {
+const ListItem: React.FC<itemType> = ({label, icon, name}: itemType) => {
   return (
     <List.Item
       title={label}
@@ -13,4 +14,4 @@ const ListItem: React.FC<itemType> = ({label,icon,name}:itemType) => {
   );
 };
 
-export default ListItem;
+export default memo(ListItem);
