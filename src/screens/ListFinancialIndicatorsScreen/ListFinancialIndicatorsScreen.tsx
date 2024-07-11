@@ -62,6 +62,7 @@ const ListFinancialIndicatorsScreen: React.FC<
           type="dateIndicator"
           title={''}
           items={indicatorsItems}
+          indicator={item.name}
         />
 
         {item.name === 'ipc' ||
@@ -79,7 +80,7 @@ const ListFinancialIndicatorsScreen: React.FC<
                   Total promedio:
                 </Text>
                 <Text variant="headlineSmall" style={styles.textStyle}>
-                  ${totalAverage.toPrecision(5)}
+                  {totalAverage.toPrecision(5)}
                 </Text>
               </View>
             </View>
@@ -92,6 +93,7 @@ const ListFinancialIndicatorsScreen: React.FC<
 const styles = StyleSheet.create({
   textStyle: {
     margin: 4,
+    color:"#023e7d"
   },
 });
 export default ListFinancialIndicatorsScreen;

@@ -19,6 +19,7 @@ interface ListComponentProps {
   title: string;
   type: 'text' | 'info' | 'dateIndicator';
   items?: Item[];
+  indicator?: string;
 }
 
 const ListComponent: React.FC<ListComponentProps> = ({
@@ -27,9 +28,11 @@ const ListComponent: React.FC<ListComponentProps> = ({
 }) => {
   const renderItem = (item: any) => {
     if (props.type === 'dateIndicator') {
-      return <ListItemDateIndicator {...item.item} />;
+      return (
+        <ListItemDateIndicator {...item.item} indicator={props?.indicator} />
+      );
     }
-  
+
     if (props.type === 'info') {
       return (
         <ListItemNavigation
@@ -47,10 +50,9 @@ const ListComponent: React.FC<ListComponentProps> = ({
       <List.Section title={props.title}>
         <FlatList
           data={props.items}
-         
           renderItem={item => renderItem(item)}
           keyExtractor={(item, index) => index.toString()}
-          ItemSeparatorComponent={()=><Divider/>}
+          ItemSeparatorComponent={() => <Divider />}
         />
       </List.Section>
     </View>

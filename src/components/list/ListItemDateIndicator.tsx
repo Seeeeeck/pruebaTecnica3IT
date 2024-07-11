@@ -6,6 +6,7 @@ import {StyleSheet} from 'react-native';
 interface ListItemIndicatorProps {
   Fecha: string;
   Valor: string;
+  indicator: string;
 }
 const ListItemDateIndicator: React.FC<ListItemIndicatorProps> = data => {
   return (
@@ -16,7 +17,7 @@ const ListItemDateIndicator: React.FC<ListItemIndicatorProps> = data => {
         return (
           <Text style={styles.textStyle} variant="bodyLarge">
             {' '}
-            ${data.Valor}
+            {['dolar', 'euro'].includes(data.indicator) && '$'}{data.Valor}
           </Text>
         );
       }}
