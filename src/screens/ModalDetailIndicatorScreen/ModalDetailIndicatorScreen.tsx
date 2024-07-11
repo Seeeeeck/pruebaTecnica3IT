@@ -37,7 +37,7 @@ const ModalDetailIndicatorScreen: React.FC<
   
       <Card style={{margin: 8}}>
         <Card.Content>
-          {['uf', 'dolar', 'euro'].includes(name) ? (
+          {[ 'dolar', 'euro'].includes(name) ? (
             <Text variant="displayLarge" style={{textAlign: 'center'}}>
               ${detail.Valor}
             </Text>
@@ -88,7 +88,8 @@ const ModalDetailIndicatorScreen: React.FC<
               Unidad de medida:
             </Text>
             <Text style={{margin: 4}} variant="labelLarge">
-              {['uf', 'dolar', 'euro'].includes(name) && 'peso'}
+              {['dolar', 'euro'].includes(name) && 'peso'}
+              {['uf'].includes(name) && 'ufs'}
               {['utm'].includes(name) && 'utms'}
               {['ipc'].includes(name) && 'ipc'}
             </Text>
