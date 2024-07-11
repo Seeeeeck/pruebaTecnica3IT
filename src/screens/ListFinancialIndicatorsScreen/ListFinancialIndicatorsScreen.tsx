@@ -9,6 +9,7 @@ import {Divider, Text} from 'react-native-paper';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {MainStackParamList} from '../../navigation/stacks/MainStack';
 import NetInfoViewStatus from '../../components/netInfoViewStatus/NetInfoViewStatus';
+import {SafeAreaView} from 'react-native';
 
 type ListFinancialIndicatorsScreenProps = NativeStackScreenProps<
   MainStackParamList,
@@ -47,53 +48,55 @@ const ListFinancialIndicatorsScreen: React.FC<
     }
   }, [dataIndicators]);
   return (
-    <NetInfoViewStatus >
-      <View style={{height: '100%'}}>
-        {loading && <LoadingIndicator />}
+    <SafeAreaView>
+      <NetInfoViewStatus>
+        <View style={{height: '100%'}}>
+          {loading && <LoadingIndicator />}
 
-        <AppBarHeader
-          title={item.label}
-          icon={item.icon}
-          isHome={false}
-          navigation={navigation}
-        />
+          <AppBarHeader
+            title={item.label}
+            icon={item.icon}
+            isHome={false}
+            navigation={navigation}
+          />
 
-        <ListComponent
-          type="dateIndicator"
-          title={''}
-          items={indicatorsItems}
-          indicator={item.name}
-        />
+          <ListComponent
+            type="dateIndicator"
+            title={''}
+            items={indicatorsItems}
+            indicator={item.name}
+          />
 
-        {item.name === 'ipc' ||
-          (item.name === 'utm' && (
-            <View>
-              <Divider />
-              <View
-                style={{
-                  display: 'flex',
-                  flexDirection: 'row',
-                  justifyContent: 'center',
-                  alignItems: 'baseline',
-                }}>
-                <Text variant="headlineSmall" style={styles.textStyle}>
-                  Total promedio:
-                </Text>
-                <Text variant="headlineSmall" style={styles.textStyle}>
-                  {totalAverage.toPrecision(5)}
-                </Text>
+          {item.name === 'ipc' ||
+            (item.name === 'utm' && (
+              <View>
+                <Divider />
+                <View
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    justifyContent: 'center',
+                    alignItems: 'baseline',
+                  }}>
+                  <Text variant="headlineSmall" style={styles.textStyle}>
+                    Total promedio:
+                  </Text>
+                  <Text variant="headlineSmall" style={styles.textStyle}>
+                    {totalAverage.toPrecision(5)}
+                  </Text>
+                </View>
               </View>
-            </View>
-          ))}
-      </View>
-    </NetInfoViewStatus>
+            ))}
+        </View>
+      </NetInfoViewStatus>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
   textStyle: {
     padding: 4,
-    color:"#023e7d"
+    color: '#023e7d',
   },
 });
 export default ListFinancialIndicatorsScreen;
