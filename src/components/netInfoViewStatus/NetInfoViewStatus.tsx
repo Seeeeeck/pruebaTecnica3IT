@@ -9,7 +9,7 @@ interface Props {
 const NetInfoViewStatus: React.FC<Props> = ({children}) => {
   const {type, isConnected} = useNetInfo();
   return (
-    <View>
+    <View style={style.container}>
       {isConnected ? (
         <View style={style.statusStyleConnected}>
           <Text style={style.statusStyleText}>Conectado</Text>
@@ -26,6 +26,7 @@ const NetInfoViewStatus: React.FC<Props> = ({children}) => {
 };
 
 const style = StyleSheet.create({
+  container:{height:"100%"},
   statusStyleConnected: {
     backgroundColor: '#38b000',
   },

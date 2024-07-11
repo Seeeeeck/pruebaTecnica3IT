@@ -5,6 +5,7 @@ import {FlatList, StyleSheet, View} from 'react-native';
 import ListItemNavigation from './ListItemNavigation';
 import ListItemDateIndicator from './ListItemDateIndicator';
 import {NavigationProp} from '@react-navigation/native';
+import {ScrollView} from 'react-native-gesture-handler';
 
 interface Item {
   id: number;
@@ -47,14 +48,13 @@ const ListComponent: React.FC<ListComponentProps> = ({
 
   return (
     <View>
-      <List.Section title={props.title}>
-        <FlatList
-          data={props.items}
-          renderItem={item => renderItem(item)}
-          keyExtractor={(item, index) => index.toString()}
-          ItemSeparatorComponent={() => <Divider />}
-        />
-      </List.Section>
+      <FlatList
+        style={{display: 'flex'}}
+        data={props.items}
+        renderItem={item => renderItem(item)}
+        keyExtractor={(item, index) => index.toString()}
+        ItemSeparatorComponent={() => <Divider />}
+      />
     </View>
   );
 };

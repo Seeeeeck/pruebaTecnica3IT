@@ -44,7 +44,7 @@ const ListItemNavigation: React.FC<ListItemNavigationProps> = ({
 
 const style = StyleSheet.create({
   listItem: {
-    margin: 10,
+    padding: 10,
   },
   titleStyle:{
    color:"#023e7d"

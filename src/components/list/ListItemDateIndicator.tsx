@@ -11,6 +11,7 @@ interface ListItemIndicatorProps {
 const ListItemDateIndicator: React.FC<ListItemIndicatorProps> = data => {
   return (
     <List.Item
+    style={{flex:1,display:"flex"}}
       titleStyle={styles.titleStyle}
       title={data.Fecha}
       right={() => {
