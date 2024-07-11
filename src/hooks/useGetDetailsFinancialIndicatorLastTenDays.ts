@@ -39,7 +39,7 @@ const useGetDetailsFinancialIndicatorLastTenDays = ({indicatorName}: useGetDetai
         setDetail(indicatorDetailResponse);
         Toast.show({
           type: 'success',
-          text1: 'Éxito',
+          text1: 'Datos obtenidos',
           visibilityTime: 2000,
         });
       } catch (error: unknown) {
