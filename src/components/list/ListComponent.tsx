@@ -47,15 +47,12 @@ const ListComponent: React.FC<ListComponentProps> = ({
   };
 
   return (
-    <View>
-      <FlatList
-        style={{display: 'flex'}}
-        data={props.items}
-        renderItem={item => renderItem(item)}
-        keyExtractor={(item, index) => index.toString()}
-        ItemSeparatorComponent={() => <Divider />}
-      />
-    </View>
+    <FlatList
+      data={props.items}
+      renderItem={item => renderItem(item)}
+      keyExtractor={(item, index) => index.toString()}
+      ItemSeparatorComponent={() => <Divider />}
+    />
   );
 };
 

@@ -22,7 +22,7 @@ const CardStatistics: React.FC<CardStatisticsProps> = ({data, labels}) => {
           ],
         }}
         width={900} // from react-native
-        height={Dimensions.get('window').height * 0.5}
+        height={Dimensions.get("screen").height * 0.5}
         yAxisLabel="$"
         yAxisSuffix=""
         yAxisInterval={1} // optional, defaults to 1

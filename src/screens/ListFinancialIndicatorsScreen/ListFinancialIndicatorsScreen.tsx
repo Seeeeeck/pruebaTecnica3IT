@@ -47,7 +47,7 @@ const ListFinancialIndicatorsScreen: React.FC<
     }
   }, [dataIndicators]);
   return (
-    <NetInfoViewStatus>
+    <NetInfoViewStatus >
       <View style={{height: '100%'}}>
         {loading && <LoadingIndicator />}
 
@@ -92,7 +92,7 @@ const ListFinancialIndicatorsScreen: React.FC<
 
 const styles = StyleSheet.create({
   textStyle: {
-    margin: 4,
+    padding: 4,
     color:"#023e7d"
   },
 });
