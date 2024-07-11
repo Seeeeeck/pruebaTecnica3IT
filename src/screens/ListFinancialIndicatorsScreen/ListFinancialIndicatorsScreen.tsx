@@ -1,4 +1,4 @@
-import {View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import AppBarHeader from '../../components/bars/AppBarHeader';
 
 import ListComponent from '../../components/list/ListComponent';
@@ -75,10 +75,10 @@ const ListFinancialIndicatorsScreen: React.FC<
                   justifyContent: 'center',
                   alignItems: 'baseline',
                 }}>
-                <Text variant="headlineSmall" style={{margin: 4}}>
+                <Text variant="headlineSmall" style={styles.textStyle}>
                   Total promedio:
                 </Text>
-                <Text variant="headlineSmall" style={{margin: 4}}>
+                <Text variant="headlineSmall" style={styles.textStyle}>
                   ${totalAverage.toPrecision(5)}
                 </Text>
               </View>
@@ -89,4 +89,9 @@ const ListFinancialIndicatorsScreen: React.FC<
   );
 };
 
+const styles = StyleSheet.create({
+  textStyle: {
+    margin: 4,
+  },
+});
 export default ListFinancialIndicatorsScreen;

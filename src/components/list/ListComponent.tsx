@@ -1,5 +1,5 @@
 import React, {memo} from 'react';
-import {Divider, List} from 'react-native-paper';
+import {Divider, List, Text} from 'react-native-paper';
 import {FlatList, StyleSheet, View} from 'react-native';
 
 import ListItemNavigation from './ListItemNavigation';
@@ -47,6 +47,7 @@ const ListComponent: React.FC<ListComponentProps> = ({
       <List.Section title={props.title}>
         <FlatList
           data={props.items}
+         
           renderItem={item => renderItem(item)}
           keyExtractor={(item, index) => index.toString()}
           ItemSeparatorComponent={()=><Divider/>}

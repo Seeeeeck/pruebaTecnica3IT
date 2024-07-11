@@ -9,6 +9,7 @@ import CardLastYearMonths from './components/CardLastYearMonths';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {MainStackParamList} from '../../navigation/stacks/MainStack';
 import NetInfoViewStatus from '../../components/netInfoViewStatus/NetInfoViewStatus';
+import LoadingIndicator from '../../components/loading/LoadingIndicator';
 
 type ModalDetailIndicatorScreenProps = NativeStackScreenProps<
   MainStackParamList,
@@ -22,7 +23,7 @@ const ModalDetailIndicatorScreen: React.FC<
   const {detail, loading} = useGetDetailFinancialIndicator({
     indicatorName: name,
   });
-  console.log(name);
+
   return (
     <NetInfoViewStatus>
       <AppBarHeader
@@ -30,7 +31,10 @@ const ModalDetailIndicatorScreen: React.FC<
         title={`${item.label}`}
         navigation={props.navigation}
       />
+      {loading && <LoadingIndicator />}
+      <View>
 
+  
       <Card style={{margin: 8}}>
         <Card.Content>
           {['uf', 'dolar', 'euro'].includes(name) ? (
@@ -54,10 +58,7 @@ const ModalDetailIndicatorScreen: React.FC<
             <Text style={{margin: 4}} variant="labelLarge">
               Nombre:
             </Text>
-            <Text
-              style={{margin: 4}}
-              variant="labelLarge"
-              >
+            <Text style={{margin: 4}} variant="labelLarge">
               {label}
             </Text>
           </View>
@@ -71,10 +72,7 @@ const ModalDetailIndicatorScreen: React.FC<
             <Text style={{margin: 4}} variant="labelLarge">
               Fecha:
             </Text>
-            <Text
-              style={{margin: 4}}
-              variant="labelLarge"
-              >
+            <Text style={{margin: 4}} variant="labelLarge">
               {detail.Fecha}
             </Text>
           </View>
@@ -89,10 +87,7 @@ const ModalDetailIndicatorScreen: React.FC<
             <Text style={{margin: 4}} variant="labelLarge">
               Unidad de medida:
             </Text>
-            <Text
-              style={{margin: 4}}
-              variant="labelLarge"
-              >
+            <Text style={{margin: 4}} variant="labelLarge">
               {['uf', 'dolar', 'euro'].includes(name) && 'peso'}
               {['utm'].includes(name) && 'utms'}
               {['ipc'].includes(name) && 'ipc'}
@@ -107,6 +102,7 @@ const ModalDetailIndicatorScreen: React.FC<
         {(name === 'ipc' || name === 'utm') && (
           <CardLastYearMonths name={name} />
         )}
+      </View>
       </View>
     </NetInfoViewStatus>
   );
