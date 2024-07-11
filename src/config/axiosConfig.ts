@@ -1,4 +1,5 @@
 import axios from 'axios';
+import Toast from 'react-native-toast-message';
 
 const apiInstance = axios.create({
   baseURL: process.env.API_URL,

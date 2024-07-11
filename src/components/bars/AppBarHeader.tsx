@@ -2,6 +2,7 @@ import {Appbar, useTheme} from 'react-native-paper';
 import {NavigationProp} from '@react-navigation/native';
 import {StyleSheet} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import Toast from 'react-native-toast-message';
 interface AppBarProps {
   title: string;
   icon?: string;
@@ -17,6 +18,7 @@ const AppBarHeader: React.FC<AppBarProps> = props => {
 
   return (
     <Appbar.Header style={styles.appBarHeaderContinerStyle}>
+    
       {!isHome && (
         <Appbar.Action icon="arrow-left" color={styles.iconStyle.color} onPress={() => goBack()} />
       )}

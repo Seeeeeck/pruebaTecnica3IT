@@ -1,6 +1,7 @@
 import {StyleSheet, View} from 'react-native';
 import {useNetInfo} from '@react-native-community/netinfo';
 import {Text} from 'react-native-paper';
+import Toast from 'react-native-toast-message';
 interface Props {
   children: React.ReactNode;
 }
@@ -18,7 +19,7 @@ const NetInfoViewStatus: React.FC<Props> = ({children}) => {
           <Text style={style.statusStyleText}>Desconectado</Text>
         </View>
       )}
-
+    
       {children}
     </View>
   );
@@ -33,7 +34,7 @@ const style = StyleSheet.create({
   },
   statusStyleText: {
     color: 'white',
-    textAlign:"center"
+    textAlign: 'center',
   },
 });
 

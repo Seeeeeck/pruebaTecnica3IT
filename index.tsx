@@ -10,6 +10,7 @@ import theme from './src/theme/theme';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import React from 'react';
 import MainStack from './src/navigation/stacks/MainStack';
+import Toast from 'react-native-toast-message';
 
 const Drawer = createDrawerNavigator();
 
@@ -18,6 +19,7 @@ export default function Main() {
     <PaperProvider theme={theme}>
       <NavigationContainer>
         <MainStack />
+        <Toast />
       </NavigationContainer>
     </PaperProvider>
   );

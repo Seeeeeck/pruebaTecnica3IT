@@ -12,6 +12,7 @@ interface HomeScreenProps {
 const HomeScreen: React.FC<HomeScreenProps> = props => {
   return (
     <NetInfoViewStatus>
+      
       <AppBarHeader
         title="Indicadores financieros"
         isHome={true}

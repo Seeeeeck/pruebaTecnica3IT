@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react';
 import apiInstance from '../config/axiosConfig'; // suponiendo que tienes una instancia de la API
 import setIndicatorNameUtil from '../utils/setIndicatorNameUtil';
+import Toast from 'react-native-toast-message';
 
 interface useGetDetailsFinancialIndicatorLastTenDaysProps {
   indicatorName: string;
@@ -36,8 +37,18 @@ const useGetDetailsFinancialIndicatorLastTenDays = ({indicatorName}: useGetDetai
         );
 
         setDetail(indicatorDetailResponse);
+        Toast.show({
+          type: 'success',
+          text1: 'Éxito',
+          visibilityTime: 2000,
+        });
       } catch (error: unknown) {
         setError((error as Error).message);
+        Toast.show({
+          type: 'error',
+          text1: 'Error',
+          visibilityTime:2000
+        });
       } finally {
         setLoading(false);
       }

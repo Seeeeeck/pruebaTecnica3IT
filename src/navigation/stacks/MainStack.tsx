@@ -2,7 +2,8 @@ import HomeScreen from '../../screens/HomeScreen/HomeScreen';
 import {createStackNavigator} from '@react-navigation/stack';
 import ListFinancialIndicatorsScreen from '../../screens/ListFinancialIndicatorsScreen/ListFinancialIndicatorsScreen';
 import ModalDetailIndicatorScreen from '../../screens/ModalDetailIndicatorScreen/ModalDetailIndicatorScreen';
-import {CompositeScreenProps } from '@react-navigation/native';
+import {CompositeScreenProps} from '@react-navigation/native';
+import Toast from 'react-native-toast-message';
 
 const MainStackNavigator = createStackNavigator<MainStackParamList>();
 
@@ -14,7 +15,7 @@ interface Item {
 }
 export type MainStackParamList = {
   Home: {name: string};
-  ListFinancialIndicators: {a:CompositeScreenProps<any,any>,item:Item};
+  ListFinancialIndicators: {a: CompositeScreenProps<any, any>; item: Item};
   ModalDetailIndicator: {
     name: string;
   };
@@ -40,6 +41,7 @@ const MainStack: React.FC<MainStackParamList> = () => {
         name="ModalDetailIndicator"
         component={ModalDetailIndicatorScreen}
       />
+  
     </MainStackNavigator.Navigator>
   );
 };
