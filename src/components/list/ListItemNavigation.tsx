@@ -2,6 +2,7 @@ import {IconButton, List, MD3Colors} from 'react-native-paper';
 
 import {memo} from 'react';
 import {NavigationProp} from '@react-navigation/native';
+import {StyleSheet} from 'react-native';
 
 interface ListItemNavigationProps {
   name: string;
@@ -22,14 +23,16 @@ const ListItemNavigation: React.FC<ListItemNavigationProps> = ({
   };
   return (
     <List.Item
+      style={style.listItem}
       onPress={() => navigateActiveListItem()}
       title={props.label}
-      left={() => <List.Icon icon={props.icon} />}
+      titleStyle={style.titleStyle}
+      left={() => <List.Icon icon={props.icon} color={style.iconColor.color} />}
       right={() => {
         return (
           <IconButton
             icon="information-outline"
-            iconColor={MD3Colors.primary40}
+            iconColor={style.iconColor.color}
             size={35}
             onPress={() => navigation?.navigate('ModalDetailIndicator', props)}
           />
@@ -38,5 +41,17 @@ const ListItemNavigation: React.FC<ListItemNavigationProps> = ({
     />
   );
 };
+
+const style = StyleSheet.create({
+  listItem: {
+    margin: 10,
+  },
+  titleStyle:{
+   color:"#023e7d"
+  },
+  iconColor:{
+    color:"#023e7d"
+  }
+});
 
 export default memo(ListItemNavigation);

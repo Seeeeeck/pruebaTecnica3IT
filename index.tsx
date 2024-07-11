@@ -2,7 +2,7 @@
  * @format
  */
 
-import {AppRegistry} from 'react-native';
+import {AppRegistry, View} from 'react-native';
 import {name as appName} from './app.json';
 import {PaperProvider} from 'react-native-paper';
 import {NavigationContainer} from '@react-navigation/native';
@@ -18,7 +18,6 @@ export default function Main() {
     <PaperProvider theme={theme}>
       <NavigationContainer>
         <MainStack />
-       
       </NavigationContainer>
     </PaperProvider>
   );

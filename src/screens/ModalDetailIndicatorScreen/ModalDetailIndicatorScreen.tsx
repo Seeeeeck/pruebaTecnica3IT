@@ -8,12 +8,15 @@ import CardLastTenDaysStatistics from './components/CardLastTenDaysStatistics';
 import CardLastYearMonths from './components/CardLastYearMonths';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {MainStackParamList} from '../../navigation/stacks/MainStack';
+import NetInfoViewStatus from '../../components/netInfoViewStatus/NetInfoViewStatus';
 
 type ModalDetailIndicatorScreenProps = NativeStackScreenProps<
   MainStackParamList,
   'ModalDetailIndicator'
 >;
-const ModalDetailIndicatorScreen: React.FC<ModalDetailIndicatorScreenProps> = props => {
+const ModalDetailIndicatorScreen: React.FC<
+  ModalDetailIndicatorScreenProps
+> = props => {
   const {...item} = props.route.params;
   const {name, label} = props.route.params;
   const {detail, loading} = useGetDetailFinancialIndicator({
@@ -21,7 +24,7 @@ const ModalDetailIndicatorScreen: React.FC<ModalDetailIndicatorScreenProps> = pr
   });
   console.log(name);
   return (
-    <View>
+    <NetInfoViewStatus>
       <AppBarHeader
         isHome={false}
         title={`${item.label}`}
@@ -30,9 +33,16 @@ const ModalDetailIndicatorScreen: React.FC<ModalDetailIndicatorScreenProps> = pr
 
       <Card style={{margin: 8}}>
         <Card.Content>
-          <Text variant="displayLarge" style={{textAlign: 'center'}}>
-            ${detail.Valor}
-          </Text>
+          {['uf', 'dolar', 'euro'].includes(name) ? (
+            <Text variant="displayLarge" style={{textAlign: 'center'}}>
+              ${detail.Valor}
+            </Text>
+          ) : (
+            <Text variant="displayLarge" style={{textAlign: 'center'}}>
+              {detail.Valor}
+            </Text>
+          )}
+
           <Divider />
           <View
             style={{
@@ -47,7 +57,7 @@ const ModalDetailIndicatorScreen: React.FC<ModalDetailIndicatorScreenProps> = pr
             <Text
               style={{margin: 4}}
               variant="labelLarge"
-              style={{textAlign: 'center'}}>
+              >
               {label}
             </Text>
           </View>
@@ -64,10 +74,11 @@ const ModalDetailIndicatorScreen: React.FC<ModalDetailIndicatorScreenProps> = pr
             <Text
               style={{margin: 4}}
               variant="labelLarge"
-              style={{textAlign: 'center'}}>
+              >
               {detail.Fecha}
             </Text>
           </View>
+
           <View
             style={{
               display: 'flex',
@@ -81,8 +92,10 @@ const ModalDetailIndicatorScreen: React.FC<ModalDetailIndicatorScreenProps> = pr
             <Text
               style={{margin: 4}}
               variant="labelLarge"
-              style={{textAlign: 'center'}}>
-              Peso
+              >
+              {['uf', 'dolar', 'euro'].includes(name) && 'peso'}
+              {['utm'].includes(name) && 'utms'}
+              {['ipc'].includes(name) && 'ipc'}
             </Text>
           </View>
         </Card.Content>
@@ -95,7 +108,7 @@ const ModalDetailIndicatorScreen: React.FC<ModalDetailIndicatorScreenProps> = pr
           <CardLastYearMonths name={name} />
         )}
       </View>
-    </View>
+    </NetInfoViewStatus>
   );
 };
 

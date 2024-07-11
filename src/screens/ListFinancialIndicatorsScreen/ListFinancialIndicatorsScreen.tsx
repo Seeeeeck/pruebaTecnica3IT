@@ -8,14 +8,18 @@ import {useEffect, useMemo, useState} from 'react';
 import {Divider, Text} from 'react-native-paper';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {MainStackParamList} from '../../navigation/stacks/MainStack';
+import NetInfoViewStatus from '../../components/netInfoViewStatus/NetInfoViewStatus';
 
-type ListFinancialIndicatorsScreenProps =NativeStackScreenProps<MainStackParamList, 'ListFinancialIndicators'>;
+type ListFinancialIndicatorsScreenProps = NativeStackScreenProps<
+  MainStackParamList,
+  'ListFinancialIndicators'
+>;
 
 const ListFinancialIndicatorsScreen: React.FC<
   ListFinancialIndicatorsScreenProps
 > = ({navigation, route}) => {
   const date = new Date();
-  const {item}= route.params;
+  const {item} = route.params;
 
   const {
     indicators: dataIndicators,
@@ -43,39 +47,45 @@ const ListFinancialIndicatorsScreen: React.FC<
     }
   }, [dataIndicators]);
   return (
-    <View style={{height: '100%'}}>
-      {loading && <LoadingIndicator />}
+    <NetInfoViewStatus>
+      <View style={{height: '100%'}}>
+        {loading && <LoadingIndicator />}
 
-      <AppBarHeader
-        title={item.label}
-        icon={item.icon}
-        isHome={false}
-        navigation={navigation}
-      />
+        <AppBarHeader
+          title={item.label}
+          icon={item.icon}
+          isHome={false}
+          navigation={navigation}
+        />
 
-      <ListComponent type="dateIndicator" title={''} items={indicatorsItems} />
+        <ListComponent
+          type="dateIndicator"
+          title={''}
+          items={indicatorsItems}
+        />
 
-      {item.name === 'ipc' ||
-        (item.name === 'utm' && (
-          <View>
-            <Divider />
-            <View
-              style={{
-                display: 'flex',
-                flexDirection: 'row',
-                justifyContent: 'center',
-                alignItems: 'baseline',
-              }}>
-              <Text variant="headlineSmall" style={{margin: 4}}>
-                Total promedio:
-              </Text>
-              <Text variant="headlineSmall" style={{margin: 4}}>
-                ${totalAverage.toPrecision(5)}
-              </Text>
+        {item.name === 'ipc' ||
+          (item.name === 'utm' && (
+            <View>
+              <Divider />
+              <View
+                style={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  justifyContent: 'center',
+                  alignItems: 'baseline',
+                }}>
+                <Text variant="headlineSmall" style={{margin: 4}}>
+                  Total promedio:
+                </Text>
+                <Text variant="headlineSmall" style={{margin: 4}}>
+                  ${totalAverage.toPrecision(5)}
+                </Text>
+              </View>
             </View>
-          </View>
-        ))}
-    </View>
+          ))}
+      </View>
+    </NetInfoViewStatus>
   );
 };
 
