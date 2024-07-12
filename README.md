@@ -14,6 +14,8 @@ Indicadores Financieros es una aplicación móvil que proporciona información f
 
 ## 3.Ejecutar la aplicación
 - npm run  android
+- npm run  ios
+  
 
 ## Dependencias
 ### Librerías Utilizadas
