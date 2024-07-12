@@ -11,6 +11,7 @@ Indicadores Financieros es una aplicación móvil que proporciona información f
 
 ## 2.Instalar modulos de node con npm
 - npm install
+- pod install
 
 ## 3.Ejecutar la aplicación
 - npm run  android
